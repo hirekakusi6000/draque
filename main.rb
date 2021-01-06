@@ -1,14 +1,16 @@
 require "./brave.rb"
 require "./monster.rb"
 
-brave = Brave.new(name: "ゆうしゃ", hp: 300, offense: 200, defense: 100)
-monster = Monster.new(name: "デーモン", hp: 800, offense: 150, defense: 50)
+brave = Brave.new(name: "ゆうしゃ", hp: 300, offense: 300, defense: 100)
+monster = Monster.new(name: "デーモン", hp: 300, offense: 100, defense: 300)
 
-p "#{monster.name}があらわれた!"
+puts "#{monster.name}があらわれた!"
 
 while brave.hp > 0 && monster.hp > 0
   #ゆうしゃの攻撃 
   brave.turn(monster)
+
+break if monster.hp <= 0
 
   #モンスターの攻撃
   monster.turn(brave)
@@ -22,4 +24,4 @@ while brave.hp > 0 && monster.hp > 0
     TEXT
 end
 
-p brave.hp > 0 ? "#{monster.name}をやっつけた!" : "#{brave.name}はしんでしまった!"
+puts brave.hp > 0 ? "#{monster.name}をやっつけた!" : "#{brave.name}はしんでしまった!"
